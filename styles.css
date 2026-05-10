@@ -1,0 +1,661 @@
+:root {
+    --primary-black: #0a0a0a;
+    --electric-blue: #00ffff;
+    --neon-purple: #ff00ff;
+    --neon-pink: #ff0080;
+    --accent-red: #ff0040;
+    --glass-white: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-primary: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: var(--primary-black);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.main-container {
+    text-align: center;
+    padding: 3rem 2rem 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.city-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+        linear-gradient(180deg, var(--primary-black) 0%, #000000 100%);
+    animation: cityPulse 8s ease-in-out infinite;
+}
+
+@keyframes cityPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, var(--electric-blue), transparent),
+        radial-gradient(2px 2px at 60% 70%, var(--neon-purple), transparent),
+        radial-gradient(1px 1px at 50% 50%, var(--electric-blue), transparent);
+    background-size: 200px 200px, 150px 150px, 100px 100px;
+    animation: floatParticles 20s linear infinite;
+}
+
+@keyframes floatParticles {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-100px) translateX(-50px); }
+}
+
+.logo-container {
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.logo {
+    height: 250px;
+    filter: drop-shadow(0 0 40px var(--electric-blue));
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 0 40px var(--electric-blue)); }
+    50% { filter: drop-shadow(0 0 80px var(--neon-purple)); }
+}
+
+.containers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.cyber-container {
+    background: var(--glass-white);
+    border: 2px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cyber-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.cyber-container:hover::before {
+    left: 100%;
+}
+
+.cyber-container:hover {
+    transform: translateY(-5px);
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.cyber-container:nth-child(2):hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+}
+
+.cyber-container:nth-child(3):hover {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
+}
+
+.cyber-container:nth-child(4):hover {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
+}
+
+.container-content h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--electric-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.container-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+.bancolombia-logo {
+    height: 80px;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 15px var(--electric-blue));
+}
+
+.nequi-logo {
+    height: 150px;
+    margin-bottom: 0.3rem;
+    filter: drop-shadow(0 0 20px var(--neon-pink));
+}
+
+.daviplata-logo {
+    height: 100px;
+    margin-bottom: 0.3rem;
+    filter: drop-shadow(0 0 20px var(--accent-red));
+}
+
+.nequi-nombres-logo {
+    height: 150px;
+    margin-bottom: 0.3rem;
+    filter: drop-shadow(0 0 20px var(--neon-pink));
+}
+
+.download-text {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--electric-blue);
+    text-shadow: 0 0 10px var(--electric-blue);
+    margin: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.action-button {
+    background: var(--glass-white);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--electric-blue);
+    text-shadow: 0 0 10px var(--electric-blue);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.action-button:hover::before {
+    left: 100%;
+}
+
+.action-button:hover {
+    transform: translateY(-5px);
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding-top: 0.5rem;
+        padding: 0.5rem 0.3rem;
+    }
+    
+    .logo-container {
+        margin-bottom: 0.8rem;
+        margin-top: 0;
+    }
+    
+    .containers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 350px;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .logo {
+        height: 200px;
+    }
+    
+    .cyber-container {
+        min-height: 120px;
+        padding: 0.8rem;
+    }
+    
+    .container-content h3 {
+        font-size: 1rem;
+    }
+    
+    .container-content p {
+        font-size: 0.9rem;
+    }
+    
+    .bancolombia-logo {
+        height: 50px;
+        margin-bottom: 0.3rem;
+    }
+    
+    .nequi-nombres-logo {
+        height: 130px;
+        margin-bottom: 0.3rem;
+    }
+    
+    .daviplata-logo {
+        height: 60px;
+        margin-bottom: 0.3rem;
+    }
+    
+    .download-text {
+        font-size: 0.6rem;
+    }
+    
+    .action-buttons {
+        padding: 0.5rem 0;
+        margin-top: 0;
+    }
+}
+
+/* ===== SUPPORT MODAL ===== */
+.support-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.support-modal-content {
+    position: relative;
+    background: var(--glass-white);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    max-width: 600px;
+    margin: 5% auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+}
+
+.support-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.support-modal-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--electric-blue);
+    text-shadow: 0 0 10px var(--electric-blue);
+    margin: 0;
+}
+
+.support-modal-close {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.support-modal-close:hover {
+    background: var(--glass-white);
+    color: var(--electric-blue);
+    transform: rotate(90deg);
+}
+
+.support-contacts {
+    display: grid;
+    gap: 1rem;
+}
+
+.contact-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1rem;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border-color: var(--electric-blue);
+}
+
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.contact-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.contact-role {
+    color: var(--neon-purple);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.contact-methods {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--glass-white);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.contact-method:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.contact-method.whatsapp:hover {
+    border-color: #25D366;
+    color: #25D366;
+}
+
+.contact-method.telegram:hover {
+    border-color: #0088cc;
+    color: #0088cc;
+}
+
+.contact-icon {
+    width: 18px;
+    height: 18px;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+/* ===== SUPPORT MODAL MOBILE ===== */
+@media (max-width: 768px) {
+    .support-modal-content {
+        margin: 10% 1rem;
+        padding: 1.5rem;
+        max-width: none;
+    }
+    
+    .support-modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .contact-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .contact-name {
+        font-size: 1.1rem;
+    }
+    
+    .contact-role {
+        font-size: 0.7rem;
+    }
+    
+    .contact-methods {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .contact-method {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .contact-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* ===== FAQ SECTION ===== */
+.faq-section {
+    padding: 1rem 1rem 2rem 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--electric-blue);
+    text-shadow: 
+        0 0 10px var(--electric-blue),
+        0 0 20px var(--electric-blue),
+        0 0 30px var(--electric-blue);
+    position: relative;
+}
+
+.faq-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-cyber);
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--glass-white);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(0, 255, 255, 0.05);
+}
+
+.faq-question h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.faq-toggle {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--electric-blue);
+    text-shadow: 0 0 10px var(--electric-blue);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.faq-answer p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* FAQ Responsive */
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 0 1rem 1rem 1rem;
+    }
+    
+    .faq-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.3rem;
+        color: var(--electric-blue);
+        text-shadow: 
+            0 0 8px var(--electric-blue),
+            0 0 15px var(--electric-blue);
+    }
+    
+    .faq-question {
+        padding: 0.8rem;
+    }
+    
+    .faq-question h3 {
+        font-size: 1rem;
+    }
+    
+    .faq-toggle {
+        font-size: 1.2rem;
+    }
+    
+    .faq-item.active .faq-answer {
+        max-height: 300px;
+        padding: 0 1rem 1rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.9rem;
+    }
+}
