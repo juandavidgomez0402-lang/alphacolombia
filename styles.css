@@ -77,6 +77,17 @@ body {
     100% { transform: translateY(-100px) translateX(-50px); }
 }
 
+@keyframes floatText {
+    0%, 100% { 
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateX(-50%) translateY(-5px);
+        opacity: 1;
+    }
+}
+
 .logo-container {
     margin-bottom: 2.5rem;
     margin-top: 1rem;
@@ -91,7 +102,7 @@ body {
 
 @keyframes logoGlow {
     0%, 100% { filter: drop-shadow(0 0 40px var(--electric-blue)); }
-    50% { filter: drop-shadow(0 0 80px var(--neon-purple)); }
+    50% { filter: drop-shadow(0 0 60px var(--electric-blue)); }
 }
 
 .containers-grid {
@@ -212,16 +223,16 @@ body {
 }
 
 .action-button {
-    background: var(--glass-white);
-    border: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, var(--electric-blue), var(--neon-purple));
+    border: 2px solid var(--electric-blue);
     border-radius: 15px;
-    padding: 1rem 2rem;
+    padding: 1.2rem 2.5rem;
     font-family: 'Orbitron', monospace;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 900;
     text-transform: uppercase;
-    color: var(--electric-blue);
-    text-shadow: 0 0 10px var(--electric-blue);
+    color: var(--text-primary);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
@@ -230,6 +241,17 @@ body {
     gap: 0.5rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    animation: buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { 
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    50% { 
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.2);
+    }
 }
 
 .action-button::before {
@@ -239,8 +261,9 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
     transition: left 0.5s ease;
+    z-index: 1;
 }
 
 .action-button:hover::before {
@@ -248,18 +271,22 @@ body {
 }
 
 .action-button:hover {
-    transform: translateY(-5px);
-    border-color: var(--electric-blue);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    transform: translateY(-8px) scale(1.05);
+    border-color: var(--neon-pink);
+    background: linear-gradient(135deg, var(--neon-pink), var(--electric-blue));
+    box-shadow: 0 0 50px rgba(255, 0, 128, 0.8), 0 0 80px rgba(0, 255, 255, 0.6), inset 0 0 30px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 25px rgba(255, 255, 255, 1);
 }
 
 .action-buttons {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    padding: 1rem 0;
-    background: rgba(0, 0, 0, 0.3);
+    padding: 1.5rem 0;
+    background: rgba(0, 0, 0, 0.4);
+    position: relative;
 }
+
 
 @media (max-width: 768px) {
     .main-container {
@@ -316,8 +343,13 @@ body {
     }
     
     .action-buttons {
-        padding: 0.5rem 0;
+        padding: 1rem 0;
         margin-top: 0;
+    }
+    
+    .action-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
     }
 }
 
@@ -342,8 +374,8 @@ body {
     padding: 1.5rem;
     max-width: 600px;
     margin: 5% auto;
-    max-height: 80vh;
-    overflow-y: auto;
+    max-height: 90vh;
+    overflow: hidden;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
 }
@@ -399,6 +431,7 @@ body {
     padding: 1rem;
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .contact-card:hover {
@@ -407,26 +440,62 @@ body {
     border-color: var(--electric-blue);
 }
 
+.contact-card.verified:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    border-color: var(--electric-blue);
+}
+
 .contact-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
 }
 
 .contact-name {
     font-family: 'Orbitron', monospace;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .contact-role {
     color: var(--neon-purple);
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.verified-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #0066cc;
+    color: var(--text-primary);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+@keyframes verifiedPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .contact-methods {
@@ -474,8 +543,10 @@ body {
 @media (max-width: 768px) {
     .support-modal-content {
         margin: 10% 1rem;
-        padding: 1.5rem;
+        padding: 1rem;
         max-width: none;
+        max-height: 95vh;
+        overflow: hidden;
     }
     
     .support-modal-title {
@@ -485,15 +556,17 @@ body {
     .contact-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem;
+        gap: 0.3rem;
+        margin-bottom: 0.4rem;
     }
     
     .contact-name {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        gap: 0.3rem;
     }
     
     .contact-role {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
     
     .contact-methods {
@@ -526,7 +599,7 @@ body {
 
 .faq-title {
     font-family: 'Orbitron', monospace;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 900;
     text-align: center;
     text-transform: uppercase;
@@ -630,7 +703,7 @@ body {
     }
     
     .faq-title {
-        font-size: 1.8rem;
+        font-size: 1rem;
         margin-bottom: 0.3rem;
         color: var(--electric-blue);
         text-shadow: 
