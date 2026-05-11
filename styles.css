@@ -117,17 +117,25 @@ body {
     background: var(--glass-white);
     border: 2px solid var(--glass-border);
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-    min-height: 220px;
+    min-height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.container-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
 }
 
 .cyber-container::before {
@@ -185,41 +193,36 @@ body {
 }
 
 .bancolombia-logo {
-    height: 80px;
-    margin-bottom: 0.5rem;
+    height: 65px;
+    margin-bottom: 0.3rem;
     filter: drop-shadow(0 0 15px var(--electric-blue));
 }
 
 .nequi-logo {
     height: 150px;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
     filter: drop-shadow(0 0 20px var(--neon-pink));
 }
 
 .daviplata-logo {
-    height: 100px;
-    margin-bottom: 0.3rem;
+    height: 65px;
+    margin-bottom: 0.2rem;
     filter: drop-shadow(0 0 20px var(--accent-red));
 }
 
 .nequi-nombres-logo {
-    height: 150px;
-    margin-bottom: 0.3rem;
+    height: 80px;
+    margin-bottom: 0.2rem;
     filter: drop-shadow(0 0 20px var(--neon-pink));
 }
 
 .download-text {
     font-family: 'Orbitron', monospace;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--electric-blue);
     text-shadow: 0 0 10px var(--electric-blue);
-    margin: 0;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .action-button {
@@ -311,8 +314,8 @@ body {
     }
     
     .cyber-container {
-        min-height: 120px;
-        padding: 0.8rem;
+        min-height: 100px;
+        padding: 0.6rem;
     }
     
     .action-buttons {
@@ -334,18 +337,23 @@ body {
     }
     
     .bancolombia-logo {
-        height: 50px;
-        margin-bottom: 0.3rem;
+        height: 40px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .nequi-logo {
+        height: 75px;
+        margin-bottom: 0.2rem;
     }
     
     .nequi-nombres-logo {
-        height: 130px;
-        margin-bottom: 0.3rem;
+        height: 75px;
+        margin-bottom: 0.2rem;
     }
     
     .daviplata-logo {
-        height: 60px;
-        margin-bottom: 0.3rem;
+        height: 40px;
+        margin-bottom: 0.2rem;
     }
     
     .download-text {
