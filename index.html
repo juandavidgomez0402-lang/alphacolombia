@@ -133,6 +133,20 @@
     </div>
     </div>
 
+    <!-- Alert Flotante -->
+    <div id="alertTooltip" class="alert-tooltip">
+        <div class="alert-content">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-text">
+                <strong>¡Importante!</strong><br>
+                Contacta únicamente con nuestros vendedores autorizados para evitar estafas. 
+                Verifica siempre los contactos oficiales antes de realizar cualquier transacción.
+            </div>
+            <button class="alert-close" onclick="closeAlert()">×</button>
+        </div>
+        <div class="alert-arrow"></div>
+    </div>
+
     <!-- FAQ Section -->
     <section class="faq-section">
         <div class="faq-container">
@@ -187,7 +201,58 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script>
+        // Funciones del modal
+        function openSupportModal() {
+            document.getElementById('supportModal').style.display = 'block';
+        }
+
+        function closeSupportModal() {
+            document.getElementById('supportModal').style.display = 'none';
+        }
+
+        // Función para cerrar alerta
+        function closeAlert() {
+            const alert = document.getElementById('alertTooltip');
+            alert.style.display = 'none';
+            // Guardar en localStorage para no mostrar de nuevo
+            localStorage.setItem('alertClosed', 'true');
+        }
+
+        // Mostrar alerta al cargar la página si no se ha cerrado antes
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('alertClosed') !== 'true') {
+                setTimeout(function() {
+                    const alert = document.getElementById('alertTooltip');
+                    const button = document.querySelector('.action-button');
+                    
+                    if (alert && button) {
+                        // Posicionar alerta cerca del botón
+                        const buttonRect = button.getBoundingClientRect();
+                        alert.style.display = 'block';
+                        
+                        // Ajustar posición para móvil y desktop
+                        if (window.innerWidth <= 768) {
+                            alert.style.bottom = '180px';
+                            alert.style.left = '50%';
+                            alert.style.transform = 'translateX(-50%)';
+                        } else {
+                            alert.style.top = (buttonRect.top - 120) + 'px';
+                            alert.style.left = (buttonRect.left + buttonRect.width / 2 - 150) + 'px';
+                        }
+                    }
+                }, 1500); // Mostrar después de 1.5 segundos
+            }
+        });
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('supportModal');
+            if (event.target == modal) {
+                closeSupportModal();
+            }
+        }
+    </script>
     
     <!-- Autoría -->
     <div class="authorship">
