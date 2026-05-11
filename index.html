@@ -215,34 +215,30 @@
         function closeAlert() {
             const alert = document.getElementById('alertTooltip');
             alert.style.display = 'none';
-            // Guardar en localStorage para no mostrar de nuevo
-            localStorage.setItem('alertClosed', 'true');
         }
 
-        // Mostrar alerta al cargar la página si no se ha cerrado antes
+        // Mostrar alerta cada vez que se recarga la página
         window.addEventListener('load', function() {
-            if (localStorage.getItem('alertClosed') !== 'true') {
-                setTimeout(function() {
-                    const alert = document.getElementById('alertTooltip');
-                    const button = document.querySelector('.action-button');
+            setTimeout(function() {
+                const alert = document.getElementById('alertTooltip');
+                const button = document.querySelector('.action-button');
+                
+                if (alert && button) {
+                    // Posicionar alerta cerca del botón
+                    const buttonRect = button.getBoundingClientRect();
+                    alert.style.display = 'block';
                     
-                    if (alert && button) {
-                        // Posicionar alerta cerca del botón
-                        const buttonRect = button.getBoundingClientRect();
-                        alert.style.display = 'block';
-                        
-                        // Ajustar posición para móvil y desktop
-                        if (window.innerWidth <= 768) {
-                            alert.style.bottom = '180px';
-                            alert.style.left = '50%';
-                            alert.style.transform = 'translateX(-50%)';
-                        } else {
-                            alert.style.top = (buttonRect.top - 120) + 'px';
-                            alert.style.left = (buttonRect.left + buttonRect.width / 2 - 150) + 'px';
-                        }
+                    // Ajustar posición para móvil y desktop
+                    if (window.innerWidth <= 768) {
+                        alert.style.bottom = '180px';
+                        alert.style.left = '50%';
+                        alert.style.transform = 'translateX(-50%)';
+                    } else {
+                        alert.style.top = (buttonRect.top - 120) + 'px';
+                        alert.style.left = (buttonRect.left + buttonRect.width / 2 - 150) + 'px';
                     }
-                }, 1500); // Mostrar después de 1.5 segundos
-            }
+                }
+            }, 1500); // Mostrar después de 1.5 segundos
         });
 
         // Cerrar modal al hacer clic fuera
