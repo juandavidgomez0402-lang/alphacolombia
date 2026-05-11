@@ -154,11 +154,18 @@
             <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>(en desarrollo)</h3>
+                        <h3>¿Cómo actualizar las apps?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p><strong>EN DESARROLLO</strong></p>
+                        <p><strong>Pasos para actualizar:</strong></p>
+                        <ol>
+                            <li>Desinstala la aplicación actual de tu dispositivo</li>
+                            <li>Ingresa a los contenedores de arriba y descarga la versión más reciente</li>
+                            <li>Instala la nueva aplicación descargada</li>
+                            <li>Comunícate con un administrador para liberar el dispositivo</li>
+                        </ol>
+                        <p><em>Importante: Siempre contacta con un admin después de instalar para activar tu dispositivo.</em></p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -248,6 +255,41 @@
                 closeSupportModal();
             }
         }
+
+        // ===== FAQ INTERACTIVE SCRIPT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const toggle = item.querySelector('.faq-toggle');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                            otherItem.querySelector('.faq-toggle').textContent = '+';
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isActive) {
+                        item.classList.remove('active');
+                        answer.style.maxHeight = null;
+                        toggle.textContent = '+';
+                    } else {
+                        item.classList.add('active');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        toggle.textContent = '−';
+                    }
+                });
+            });
+        });
     </script>
     
     <!-- Autoría -->
