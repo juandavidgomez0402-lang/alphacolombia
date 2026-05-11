@@ -772,6 +772,112 @@ body {
     }
 }
 
+/* ===== PRICING INFO STYLES ===== */
+.pricing-info {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+}
+
+.pricing-table {
+    margin: 1rem 0;
+}
+
+.pricing-table h4 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--electric-blue);
+    text-shadow: 0 0 10px var(--electric-blue);
+    margin: 0 0 1rem 0;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    background: rgba(0, 0, 0, 0.4);
+    border-left: 3px solid var(--neon-pink);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.price-item:hover {
+    background: rgba(0, 0, 0, 0.6);
+    border-left-color: var(--electric-blue);
+    transform: translateX(5px);
+}
+
+.price {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    color: var(--neon-pink);
+    font-size: 1rem;
+}
+
+.balance {
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+    color: var(--electric-blue);
+    font-size: 0.95rem;
+}
+
+
+.payment-method h4 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(0, 255, 0, 0.8);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    margin: 0 0 0.5rem 0;
+}
+
+.payment-method p {
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+}
+
+.payment-note {
+    color: var(--neon-purple) !important;
+    font-size: 0.9rem !important;
+    font-style: italic;
+}
+
+/* Mobile responsive pricing */
+@media (max-width: 768px) {
+    .price-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .price {
+        font-size: 0.9rem;
+    }
+    
+    .balance {
+        font-size: 0.85rem;
+    }
+    
+    .pricing-table h4 {
+        font-size: 1rem;
+    }
+    
+    .payment-method h4 {
+        font-size: 1rem;
+    }
+    
+    .payment-method p {
+        font-size: 0.9rem;
+    }
+}
+
 /* ===== AUTHORSHIP SECTION ===== */
 .authorship {
     position: fixed;
