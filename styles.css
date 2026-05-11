@@ -372,16 +372,40 @@ body {
 
 .support-modal-content {
     position: relative;
-    background: var(--glass-white);
-    border: 2px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--electric-blue);
     border-radius: 20px;
-    padding: 1.5rem;
+    padding: 2rem;
     max-width: 600px;
+    width: 90%;
     margin: 5% auto;
     max-height: 90vh;
-    overflow: hidden;
+    overflow-y: auto;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+}
+
+/* Scrollbar cyberpunk */
+.support-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.support-modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+}
+
+.support-modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--electric-blue), var(--neon-purple));
+    border-radius: 10px;
+    border: 1px solid var(--electric-blue);
+    box-shadow: 0 0 10px var(--electric-blue);
+}
+
+.support-modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--neon-pink), var(--electric-blue));
+    box-shadow: 0 0 15px var(--neon-pink);
 }
 
 .support-modal-header {
@@ -550,7 +574,30 @@ body {
         padding: 1rem;
         max-width: none;
         max-height: 95vh;
-        overflow: hidden;
+        overflow-y: auto;
+    }
+    
+    /* Scrollbar cyberpunk para móvil */
+    .support-modal-content::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .support-modal-content::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border: 1px solid var(--glass-border);
+    }
+    
+    .support-modal-content::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--electric-blue), var(--neon-purple));
+        border-radius: 8px;
+        border: 1px solid var(--electric-blue);
+        box-shadow: 0 0 8px var(--electric-blue);
+    }
+    
+    .support-modal-content::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, var(--neon-pink), var(--electric-blue));
+        box-shadow: 0 0 12px var(--neon-pink);
     }
     
     .support-modal-title {
@@ -607,32 +654,11 @@ body {
     left: 15px;
     font-family: 'Orbitron', monospace;
     font-size: 0.8rem;
-    color: var(--neon-pink);
+    color: white;
     opacity: 0.7;
     z-index: 1000;
-    text-shadow: 
-        0 0 10px var(--neon-pink),
-        0 0 20px var(--neon-pink),
-        0 0 30px var(--neon-pink);
-    animation: alphaGlow 2s ease-in-out infinite alternate;
 }
 
-@keyframes alphaGlow {
-    0%, 100% { 
-        opacity: 0.7;
-        text-shadow: 
-            0 0 10px var(--neon-pink),
-            0 0 20px var(--neon-pink),
-            0 0 30px var(--neon-pink);
-    }
-    50% { 
-        opacity: 1;
-        text-shadow: 
-            0 0 15px var(--neon-pink),
-            0 0 25px var(--neon-pink),
-            0 0 35px var(--neon-pink);
-    }
-}
 
 /* ===== FAQ SECTION ===== */
 .faq-section {
