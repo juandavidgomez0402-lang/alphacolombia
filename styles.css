@@ -282,7 +282,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    padding: 4rem;
+    padding: 2rem;
     background: rgba(0, 0, 0, 0.4);
     position: relative;
 }
@@ -301,9 +301,9 @@ body {
     
     .containers-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
+        gap: 1rem;
         max-width: 350px;
-        margin: 0 auto 0.3rem auto;
+        margin: 0 auto 1rem auto;
     }
     
     .logo {
@@ -316,7 +316,7 @@ body {
     }
     
     .action-buttons {
-        padding: 30rem;
+        padding: 2rem;
     }
     
     .container-content h3 {
@@ -347,7 +347,7 @@ body {
     }
     
     .action-buttons {
-        padding: 1rem 0;
+        padding: 2rem 0;
         margin-top: 0;
     }
     
@@ -639,8 +639,8 @@ body {
 /* ===== AUTHORSHIP SECTION ===== */
 .authorship {
     position: fixed;
-    bottom: 10px;
-    right: 15px;
+    bottom: 20px;
+    right: 20px;
     font-family: 'Orbitron', monospace;
     font-size: 0.8rem;
     color: white;
@@ -650,8 +650,8 @@ body {
 
 .alpha-badge {
     position: fixed;
-    bottom: 10px;
-    left: 15px;
+    bottom: 20px;
+    left: 20px;
     font-family: 'Orbitron', monospace;
     font-size: 0.8rem;
     color: white;
@@ -662,7 +662,7 @@ body {
 
 /* ===== FAQ SECTION ===== */
 .faq-section {
-padding: 1rem 1rem 2rem 1rem;
+padding: 2rem 1rem 3rem 1rem;
 background: rgba(0, 0, 0, 0.6);
 position: relative;
 }

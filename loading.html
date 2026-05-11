@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaColombia - Cargando...</title>
+    <link rel="icon" type="image/png" href="9 may 2026, 08_25_04 p.m..png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --electric-blue: #00ffff;
+            --neon-purple: #ff00ff;
+            --neon-pink: #ff0080;
+            --glass-white: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --gradient-cyber: linear-gradient(135deg, var(--electric-blue), var(--neon-purple), var(--neon-pink));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, #0a0a0a, #1a0033, #000033);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Background cyberpunk effects */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 100%, rgba(255, 0, 128, 0.1) 0%, transparent 50%);
+            animation: bgPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .loading-container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .loading-logo {
+            width: 150px;
+            height: 150px;
+            animation: logoFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px var(--electric-blue));
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+                filter: drop-shadow(0 0 20px var(--electric-blue));
+            }
+            25% { 
+                transform: translateY(-10px) scale(1.05);
+                filter: drop-shadow(0 0 30px var(--neon-purple));
+            }
+            50% { 
+                transform: translateY(0px) scale(1.1);
+                filter: drop-shadow(0 0 40px var(--neon-pink));
+            }
+            75% { 
+                transform: translateY(-5px) scale(1.05);
+                filter: drop-shadow(0 0 30px var(--electric-blue));
+            }
+        }
+
+        /* Orbit rings around logo */
+        .orbit-ring {
+            position: absolute;
+            border: 2px solid;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-ring:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            border-color: var(--electric-blue);
+            animation: rotate 4s linear infinite;
+            opacity: 0.6;
+        }
+
+        .orbit-ring:nth-child(2) {
+            width: 230px;
+            height: 230px;
+            border-color: var(--neon-purple);
+            animation: rotate 6s linear infinite reverse;
+            opacity: 0.4;
+        }
+
+        .orbit-ring:nth-child(3) {
+            width: 260px;
+            height: 260px;
+            border-color: var(--neon-pink);
+            animation: rotate 8s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Loading particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--electric-blue);
+            border-radius: 50%;
+            animation: particleFloat 3s ease-in-out infinite;
+        }
+
+        .particle:nth-child(4) {
+            top: -20px;
+            left: 20%;
+            animation-delay: 0s;
+            background: var(--electric-blue);
+        }
+
+        .particle:nth-child(5) {
+            top: -30px;
+            right: 20%;
+            animation-delay: 0.5s;
+            background: var(--neon-purple);
+        }
+
+        .particle:nth-child(6) {
+            bottom: -20px;
+            left: 30%;
+            animation-delay: 1s;
+            background: var(--neon-pink);
+        }
+
+        .particle:nth-child(7) {
+            bottom: -30px;
+            right: 30%;
+            animation-delay: 1.5s;
+            background: var(--electric-blue);
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-20px) scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+            text-shadow: 
+                0 0 10px var(--electric-blue),
+                0 0 20px var(--electric-blue),
+                0 0 30px var(--electric-blue);
+            animation: textGlow 2s ease-in-out infinite alternate;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes textGlow {
+            0% { 
+                opacity: 0.7;
+                text-shadow: 
+                    0 0 10px var(--electric-blue),
+                    0 0 20px var(--electric-blue);
+            }
+            100% { 
+                opacity: 1;
+                text-shadow: 
+                    0 0 15px var(--electric-blue),
+                    0 0 25px var(--electric-blue),
+                    0 0 35px var(--electric-blue);
+            }
+        }
+
+        .loading-subtitle {
+            font-size: 0.9rem;
+            color: var(--glass-border);
+            opacity: 0.8;
+            animation: fadeInOut 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Loading bar */
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin: 1.5rem auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: var(--gradient-cyber);
+            border-radius: 2px;
+            animation: loadingProgress 2s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--electric-blue);
+        }
+
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .loading-logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .orbit-ring:nth-child(1) {
+                width: 160px;
+                height: 160px;
+            }
+
+            .orbit-ring:nth-child(2) {
+                width: 190px;
+                height: 190px;
+            }
+
+            .orbit-ring:nth-child(3) {
+                width: 220px;
+                height: 220px;
+            }
+
+            .loading-text {
+                font-size: 1.2rem;
+            }
+
+            .loading-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .loading-bar {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="logo-wrapper">
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring"></div>
+            <img src="9 may 2026, 08_25_04 p.m..png" alt="AlphaColombia" class="loading-logo">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="loading-text">ALPHACOLOMBIA</div>
+        <div class="loading-subtitle">Iniciando sistema...</div>
+        
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+</body>
+</html>
