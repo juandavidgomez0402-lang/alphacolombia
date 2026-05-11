@@ -321,10 +321,16 @@ body {
     
     .container-content h3 {
         font-size: 1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     .container-content p {
         font-size: 0.9rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     .bancolombia-logo {
