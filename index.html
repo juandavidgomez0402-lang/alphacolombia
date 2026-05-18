@@ -147,17 +147,25 @@
     </div>
 
     <!-- Alert Flotante -->
-    <div id="alertTooltip" class="alert-tooltip">
+    <div id="alertTooltip" class="alert-tooltip" role="alert" aria-live="polite">
         <div class="alert-content">
-            <div class="alert-icon">⚠️</div>
-            <div class="alert-text">
-                <strong>¡Importante!</strong><br>
-                Contacta únicamente con nuestros vendedores autorizados para evitar estafas. 
-                Verifica siempre los contactos oficiales antes de realizar cualquier transacción.
+            <button type="button" class="alert-close" onclick="closeAlert()" aria-label="Cerrar aviso">×</button>
+            <div class="alert-header">
+                <span class="alert-icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </span>
+                <strong class="alert-title">¡Importante!</strong>
             </div>
-            <button class="alert-close" onclick="closeAlert()">×</button>
+            <p class="alert-text">
+                Contacta únicamente con nuestros vendedores autorizados para evitar estafas.
+                Verifica siempre los contactos oficiales antes de realizar cualquier transacción.
+            </p>
         </div>
-        <div class="alert-arrow"></div>
+        <div class="alert-arrow" aria-hidden="true"></div>
     </div>
 
     <!-- FAQ Section -->
@@ -276,18 +284,21 @@
                 const button = document.querySelector('.action-button');
                 
                 if (alert && button) {
-                    // Posicionar alerta cerca del botón
                     const buttonRect = button.getBoundingClientRect();
                     alert.style.display = 'block';
-                    
-                    // Ajustar posición para móvil y desktop
+
                     if (window.innerWidth <= 768) {
+                        alert.style.top = '';
                         alert.style.bottom = '180px';
                         alert.style.left = '50%';
                         alert.style.transform = 'translateX(-50%)';
+                        alert.classList.add('alert-visible');
                     } else {
+                        alert.classList.remove('alert-visible');
+                        alert.style.bottom = '';
+                        alert.style.transform = '';
                         alert.style.top = (buttonRect.top - 120) + 'px';
-                        alert.style.left = (buttonRect.left + buttonRect.width / 2 - 150) + 'px';
+                        alert.style.left = (buttonRect.left + buttonRect.width / 2 - 180) + 'px';
                     }
                 }
             }, 1500); // Mostrar después de 1.5 segundos
