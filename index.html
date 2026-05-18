@@ -2,6 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <script>
+        (function () {
+            if (sessionStorage.getItem('alphacolombia_loaded')) {
+                sessionStorage.removeItem('alphacolombia_loaded');
+                document.documentElement.classList.add('app-ready');
+            } else {
+                window.location.replace('loading.html');
+            }
+        })();
+    </script>
+    <style>html:not(.app-ready) body { visibility: hidden; }</style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alphacolombia</title>
     <link rel="icon" type="image/png" href="9 may 2026, 08_25_04 p.m..png">
@@ -131,7 +142,6 @@
             </div>
         </div>
     </div>
-    </div>
 
     <!-- Alert Flotante -->
     <div id="alertTooltip" class="alert-tooltip">
@@ -253,6 +263,8 @@
             const alert = document.getElementById('alertTooltip');
             alert.style.display = 'none';
         }
+
+        document.documentElement.classList.add('app-ready');
 
         // Mostrar alerta cada vez que se recarga la página
         window.addEventListener('load', function() {
