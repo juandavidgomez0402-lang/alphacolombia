@@ -313,35 +313,42 @@ body {
 }
 
 .action-button {
-    background: linear-gradient(135deg, var(--electric-blue), var(--neon-purple));
-    border: 2px solid var(--electric-blue);
-    border-radius: 15px;
-    padding: 1.2rem 2.5rem;
+    background: linear-gradient(165deg, #0c2a38 0%, #1a1848 50%, #12102a 100%);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 14px;
+    padding: 1rem 2.5rem;
+    min-width: 280px;
     font-family: 'Orbitron', monospace;
-    font-size: 1.1rem;
-    font-weight: 900;
+    font-size: 0.9rem;
+    font-weight: 700;
     text-transform: uppercase;
-    color: var(--text-primary);
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.1em;
+    color: #f0f8ff;
+    text-shadow: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    display: flex;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 0.75rem;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
-    animation: buttonPulse 2s ease-in-out infinite;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    z-index: 0;
 }
 
-@keyframes buttonPulse {
-    0%, 100% { 
-        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
-    }
-    50% { 
-        box-shadow: 0 0 50px rgba(0, 255, 255, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.2);
-    }
+.action-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--electric-blue), var(--neon-purple), var(--neon-pink));
+    border-radius: 14px 14px 0 0;
+    opacity: 0.95;
 }
 
 .action-button::before {
@@ -351,29 +358,61 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    transition: left 0.5s ease;
-    z-index: 1;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.55s ease;
+    z-index: 0;
 }
 
 .action-button:hover::before {
     left: 100%;
 }
 
+.action-button-icon,
+.action-button-label {
+    position: relative;
+    z-index: 1;
+}
+
+.action-button-icon {
+    color: #7ef9ff;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.45));
+    transition: color 0.25s ease, filter 0.25s ease;
+}
+
+.action-button-label {
+    line-height: 1.2;
+}
+
 .action-button:hover {
-    transform: translateY(-8px) scale(1.05);
-    border-color: var(--neon-pink);
-    background: linear-gradient(135deg, rgba(150, 0, 75, 0.9), rgba(0, 150, 150, 0.9));
-    box-shadow: 0 0 8px rgba(150, 0, 75, 0.2), 0 0 15px rgba(0, 150, 150, 0.15), inset 0 0 5px rgba(255, 255, 255, 0.05);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+    transform: translateY(-4px);
+    border-color: rgba(0, 255, 255, 0.55);
+    box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.5),
+        0 0 24px rgba(0, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.action-button:hover .action-button-icon {
+    color: #b8ffff;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.65));
+}
+
+.action-button:active {
+    transform: translateY(-1px);
+}
+
+.action-button:focus-visible {
+    outline: 2px solid var(--electric-blue);
+    outline-offset: 3px;
 }
 
 .action-buttons {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.4);
+    padding: 1.25rem 2rem 2rem;
+    background: transparent;
     position: relative;
 }
 
@@ -408,10 +447,6 @@ body {
         border-radius: 14px;
     }
     
-    .action-buttons {
-        padding: 2rem;
-    }
-    
     .container-content h3 {
         font-size: 1rem;
         word-wrap: break-word;
@@ -441,13 +476,23 @@ body {
     }
     
     .action-buttons {
-        padding: 2rem 0;
+        padding: 1rem 0.5rem 1.5rem;
         margin-top: 0;
     }
     
     .action-button {
-        padding: 1rem 2rem;
-        font-size: 1rem;
+        min-width: unset;
+        width: 100%;
+        max-width: 320px;
+        padding: 0.9rem 1.25rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.07em;
+        gap: 0.5rem;
+    }
+
+    .action-button-icon {
+        width: 18px;
+        height: 18px;
     }
 }
 
