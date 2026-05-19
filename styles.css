@@ -368,21 +368,9 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.06em;
     line-height: 1.2;
-    color: #7ef9ff;
+    color: #ffffff;
     text-shadow: none;
     text-align: center;
-}
-
-.cyber-container:nth-child(2) .download-text {
-    color: #f0a0ff;
-}
-
-.cyber-container:nth-child(3) .download-text {
-    color: #ff7a9a;
-}
-
-.cyber-container:nth-child(4) .download-text {
-    color: #ff8ec4;
 }
 
 .action-button {
