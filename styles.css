@@ -400,18 +400,6 @@ body {
     z-index: 0;
 }
 
-.action-button::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--electric-blue), var(--neon-purple), var(--neon-pink));
-    border-radius: 14px 14px 0 0;
-    opacity: 0.95;
-}
-
 .action-button::before {
     content: '';
     position: absolute;
