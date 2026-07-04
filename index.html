@@ -62,7 +62,10 @@
                     <p class="download-text">Nequi Alpha</p>
                 </div>
             </div>
-            <div class="cyber-container" onclick="window.open('https://www.mediafire.com/file/77d7vp4dzwwqmdc/Davi+Trampa.apk/file', '_blank')">
+            <div class="cyber-container" onclick="window.open('https://www.mediafire.com/file/6yvb40047fk94wl/application-1d9cddbd-326a-4215-ac75-09970fe1df43+(2).apk/file', '_blank')">
+                <button type="button" class="update-badge" onclick="event.stopPropagation(); openDaviplataUpdateModal()" aria-label="Ver novedades de la actualización">
+                    Actualizada
+                </button>
                 <div class="container-content">
                     <img src="daviplata-logo-brandlogos.net-bqleu.png" alt="Daviplata" class="daviplata-logo">
                     <p class="download-text">Daviplata Alpha</p>
@@ -84,6 +87,28 @@
                 </svg>
                 <span class="action-button-label">Recargas y Soporte</span>
             </button>
+        </div>
+    </div>
+
+    <!-- Daviplata Update Modal -->
+    <div id="daviplataUpdateModal" class="support-modal update-info-modal">
+        <div class="support-modal-content update-info-content">
+            <div class="support-modal-header">
+                <h2 class="support-modal-title">Daviplata Alpha</h2>
+                <button type="button" class="support-modal-close" onclick="closeDaviplataUpdateModal()" aria-label="Cerrar">×</button>
+            </div>
+            <p class="update-info-text">
+                Descubre la nueva actualización de nuestro clon de Daviplata.
+                Ahora registra movimientos y ofrece un flujo igual al de la app real.
+            </p>
+            <a
+                class="update-download-btn"
+                href="https://www.mediafire.com/file/6yvb40047fk94wl/application-1d9cddbd-326a-4215-ac75-09970fe1df43+(2).apk/file"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Descargar ahora
+            </a>
         </div>
     </div>
 
@@ -163,26 +188,25 @@
         </div>
     </div>
 
-    <!-- Alert Flotante -->
-    <div id="alertTooltip" class="alert-tooltip" role="alert" aria-live="polite">
-        <div class="alert-content">
-            <button type="button" class="alert-close" onclick="closeAlert()" aria-label="Cerrar aviso">×</button>
-            <div class="alert-header">
-                <span class="alert-icon" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                        <line x1="12" y1="9" x2="12" y2="13"></line>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
-                </span>
-                <strong class="alert-title">¡Importante!</strong>
+    <!-- Aviso estilo cookies -->
+    <div id="vendorNotice" class="vendor-notice" role="dialog" aria-live="polite" aria-label="Aviso de seguridad" hidden>
+        <div class="vendor-notice-inner">
+            <div class="vendor-notice-body">
+                <strong class="vendor-notice-title">¡Importante!</strong>
+                <p class="vendor-notice-text">
+                    Contacta únicamente con nuestros vendedores autorizados para evitar estafas.
+                    Verifica siempre los contactos oficiales antes de realizar cualquier transacción.
+                </p>
             </div>
-            <p class="alert-text">
-                Contacta únicamente con nuestros vendedores autorizados para evitar estafas.
-                Verifica siempre los contactos oficiales antes de realizar cualquier transacción.
-            </p>
+            <div class="vendor-notice-actions">
+                <button type="button" class="vendor-notice-btn" onclick="openOfficialVendors()">
+                    Ver vendedores oficiales
+                </button>
+                <button type="button" class="vendor-notice-close" onclick="closeVendorNotice()" aria-label="Cerrar aviso">
+                    ×
+                </button>
+            </div>
         </div>
-        <div class="alert-arrow" aria-hidden="true"></div>
     </div>
 
     <!-- FAQ Section -->
@@ -229,7 +253,7 @@
                     <div class="faq-answer">
                         <p><strong>Pagos con Llave - Tutorial en Video:</strong></p>
                         <div class="video-tutorial-container">
-                            <video class="cyber-video-player" controls poster="video-poster.jpg">
+                            <video class="cyber-video-player" controls preload="metadata">
                                 <source src="WhatsApp Video 2026-05-10 at 9.17.32 PM.mp4" type="video/mp4">
                                 Tu navegador no soporta el video.
                             </video>
@@ -286,46 +310,46 @@
             document.getElementById('supportModal').style.display = 'none';
         }
 
-        // Función para cerrar alerta
-        function closeAlert() {
-            const alert = document.getElementById('alertTooltip');
-            alert.style.display = 'none';
+        function openDaviplataUpdateModal() {
+            document.getElementById('daviplataUpdateModal').style.display = 'block';
+        }
+
+        function closeDaviplataUpdateModal() {
+            document.getElementById('daviplataUpdateModal').style.display = 'none';
+        }
+
+        function closeVendorNotice() {
+            const notice = document.getElementById('vendorNotice');
+            if (!notice) return;
+            notice.classList.remove('is-visible');
+            notice.setAttribute('hidden', '');
+        }
+
+        function openOfficialVendors() {
+            closeVendorNotice();
+            openSupportModal();
         }
 
         document.documentElement.classList.add('app-ready');
 
-        // Mostrar alerta cada vez que se recarga la página
         window.addEventListener('load', function() {
             setTimeout(function() {
-                const alert = document.getElementById('alertTooltip');
-                const button = document.querySelector('.action-button');
-                
-                if (alert && button) {
-                    const buttonRect = button.getBoundingClientRect();
-                    alert.style.display = 'block';
-
-                    if (window.innerWidth <= 768) {
-                        alert.style.top = '';
-                        alert.style.bottom = '180px';
-                        alert.style.left = '50%';
-                        alert.style.transform = 'translateX(-50%)';
-                        alert.classList.add('alert-visible');
-                    } else {
-                        alert.classList.remove('alert-visible');
-                        alert.style.bottom = '';
-                        alert.style.transform = '';
-                        alert.style.top = (buttonRect.top - 120) + 'px';
-                        alert.style.left = (buttonRect.left + buttonRect.width / 2 - 180) + 'px';
-                    }
-                }
-            }, 1500); // Mostrar después de 1.5 segundos
+                const notice = document.getElementById('vendorNotice');
+                if (!notice) return;
+                notice.removeAttribute('hidden');
+                notice.classList.add('is-visible');
+            }, 800);
         });
 
         // Cerrar modal al hacer clic fuera
         window.onclick = function(event) {
-            const modal = document.getElementById('supportModal');
-            if (event.target == modal) {
+            const supportModal = document.getElementById('supportModal');
+            const updateModal = document.getElementById('daviplataUpdateModal');
+            if (event.target === supportModal) {
                 closeSupportModal();
+            }
+            if (event.target === updateModal) {
+                closeDaviplataUpdateModal();
             }
         }
 
