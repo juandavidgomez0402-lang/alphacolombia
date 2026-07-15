@@ -633,6 +633,16 @@ body {
     box-shadow: 0 8px 24px rgba(255, 0, 64, 0.25);
 }
 
+.update-download-btn--bancolombia {
+    border-color: rgba(0, 255, 255, 0.45);
+    background: linear-gradient(165deg, #0c2a38 0%, #152238 55%, #10182a 100%);
+}
+
+.update-download-btn--bancolombia:hover {
+    border-color: rgba(0, 255, 255, 0.75);
+    box-shadow: 0 8px 24px rgba(0, 255, 255, 0.25);
+}
+
 @media (max-width: 768px) {
     .update-badge {
         top: 6px;
