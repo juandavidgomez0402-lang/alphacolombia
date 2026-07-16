@@ -328,7 +328,7 @@ body {
 .bancolombia-logo,
 .nequi-logo,
 .daviplata-logo,
-.nequi-nombres-logo {
+.alphax-data-logo {
     height: 58px;
     width: auto;
     max-width: 130px;
@@ -349,11 +349,12 @@ body {
     filter: drop-shadow(0 0 20px var(--accent-red));
 }
 
-.nequi-nombres-logo {
-    height: 76px;
-    max-width: 148px;
+.alphax-data-logo {
+    height: 90px;
+    max-width: 160px;
     max-height: calc(100% - 0.5rem);
-    filter: drop-shadow(0 0 20px var(--neon-pink));
+    border-radius: 10px;
+    filter: drop-shadow(0 0 14px rgba(212, 163, 90, 0.45));
 }
 
 .download-text {
@@ -526,8 +527,8 @@ body {
         max-width: 100px;
     }
 
-    .nequi-nombres-logo {
-        height: 62px;
+    .alphax-data-logo {
+        height: 68px;
         max-width: 128px;
         max-height: calc(100% - 0.35rem);
     }
