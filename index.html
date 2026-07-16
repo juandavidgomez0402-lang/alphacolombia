@@ -80,6 +80,19 @@
                     <p class="download-text">Nequi Nombres</p>
                 </div>
             </div>
+            <div class="cyber-container" onclick="document.getElementById('faq').scrollIntoView({ behavior: 'smooth' })">
+                <button type="button" class="update-badge" onclick="event.stopPropagation(); document.getElementById('faq').scrollIntoView({ behavior: 'smooth' })" aria-label="Ir a preguntas frecuentes">
+                    Nuevo
+                </button>
+                <div class="container-content">
+                    <svg class="faq-container-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <p class="download-text">Preguntas Frecuentes</p>
+                </div>
+            </div>
         </div>
 
         <!-- Action Button -->
@@ -235,7 +248,7 @@
     </div>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section id="faq" class="faq-section">
         <div class="faq-container">
             <h2 class="faq-title">PREGUNTAS FRECUENTES</h2>
             <div class="faq-list">
