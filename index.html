@@ -50,7 +50,7 @@
         </div>
 
         <div class="containers-grid">
-            <div class="cyber-container" onclick="window.open('https://www.mediafire.com/file/31o2we390ryt5cl/Banco+Alpha+VIP+2.0.1.apk/file', '_blank')">
+            <div class="cyber-container" onclick="openBancolombiaPlatformModal()">
                 <button type="button" class="update-badge" onclick="event.stopPropagation(); openBancolombiaUpdateModal()" aria-label="Ver actualización disponible">
                     Actualización
                 </button>
@@ -90,6 +90,21 @@
                 </svg>
                 <span class="action-button-label">Recargas y Soporte</span>
             </button>
+        </div>
+    </div>
+
+    <!-- Bancolombia Platform Modal -->
+    <div id="bancolombiaPlatformModal" class="support-modal update-info-modal">
+        <div class="support-modal-content update-info-content">
+            <div class="support-modal-header">
+                <h2 class="support-modal-title">Bancolombia Alpha</h2>
+                <button type="button" class="support-modal-close" onclick="closeBancolombiaPlatformModal()" aria-label="Cerrar">×</button>
+            </div>
+            <p class="update-info-text">Selecciona tu plataforma para continuar:</p>
+            <div class="platform-options">
+                <button type="button" class="update-download-btn update-download-btn--bancolombia platform-option-btn" onclick="downloadBancolombiaAndroid()">Android</button>
+                <button type="button" class="update-download-btn update-download-btn--iphone platform-option-btn" onclick="downloadBancolombiaIphone()">iPhone</button>
+            </div>
         </div>
     </div>
 
@@ -346,6 +361,24 @@
             document.getElementById('supportModal').style.display = 'none';
         }
 
+        function openBancolombiaPlatformModal() {
+            document.getElementById('bancolombiaPlatformModal').style.display = 'block';
+        }
+
+        function closeBancolombiaPlatformModal() {
+            document.getElementById('bancolombiaPlatformModal').style.display = 'none';
+        }
+
+        function downloadBancolombiaAndroid() {
+            window.open('https://www.mediafire.com/file/31o2we390ryt5cl/Banco+Alpha+VIP+2.0.1.apk/file', '_blank');
+            closeBancolombiaPlatformModal();
+        }
+
+        function downloadBancolombiaIphone() {
+            window.open('https://www.bc.ñeky.com', '_blank');
+            closeBancolombiaPlatformModal();
+        }
+
         function openBancolombiaUpdateModal() {
             document.getElementById('bancolombiaUpdateModal').style.display = 'block';
         }
@@ -388,10 +421,14 @@
         // Cerrar modal al hacer clic fuera
         window.onclick = function(event) {
             const supportModal = document.getElementById('supportModal');
+            const bancolombiaPlatformModal = document.getElementById('bancolombiaPlatformModal');
             const bancolombiaModal = document.getElementById('bancolombiaUpdateModal');
             const updateModal = document.getElementById('daviplataUpdateModal');
             if (event.target === supportModal) {
                 closeSupportModal();
+            }
+            if (event.target === bancolombiaPlatformModal) {
+                closeBancolombiaPlatformModal();
             }
             if (event.target === bancolombiaModal) {
                 closeBancolombiaUpdateModal();

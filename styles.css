@@ -644,6 +644,26 @@ body {
     box-shadow: 0 8px 24px rgba(0, 255, 255, 0.25);
 }
 
+.platform-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.platform-option-btn {
+    cursor: pointer;
+}
+
+.update-download-btn--iphone {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: linear-gradient(165deg, #2a2a2a 0%, #1a1a1a 55%, #101010 100%);
+}
+
+.update-download-btn--iphone:hover {
+    border-color: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+}
+
 @media (max-width: 768px) {
     .update-badge {
         top: 6px;

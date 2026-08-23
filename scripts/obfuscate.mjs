@@ -16,6 +16,10 @@ const ASSET_EXT = new Set([
 const reservedNames = [
   'openSupportModal',
   'closeSupportModal',
+  'openBancolombiaPlatformModal',
+  'closeBancolombiaPlatformModal',
+  'downloadBancolombiaAndroid',
+  'downloadBancolombiaIphone',
   'openBancolombiaUpdateModal',
   'closeBancolombiaUpdateModal',
   'openDaviplataUpdateModal',
